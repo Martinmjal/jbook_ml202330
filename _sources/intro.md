@@ -1,11 +1,12 @@
-# Welcome to your Jupyter Book
+# Modelos de Machine Learning para Detección de SPAM en correos
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+Los siguientes notebooks contienen un análisis exploratorio de datos junto a la creación de un modelo de machine learning para clasificación de correos electrónicos
 
-Check out the content pages bundled with this sample book to see more.
+![Sample Image](1_nBgCTU_hAVG00eYkcRf6Mw.PNG)
+
+En el proceso de evaluación de los modelos de machine learning, se determina cuál es el que mejor resuelve este problema y posteriormente se propone un **stacked model** para determinar si clasifica mejor que los modelos predefinidos
+
+Tabla de contenidos:
 
 ```{tableofcontents}
 ```
