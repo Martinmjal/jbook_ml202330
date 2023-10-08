@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Modelos de Machine Learning para Detección de SPAM en correos &#8212; jbook_ml202330</title>
+    <title>Machine Learning para Detección de SPAM en correos &#8212; jbook_ml202330</title>
   
   
   
@@ -61,6 +61,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -151,13 +153,15 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1 current active">
                 <a class="reference internal" href="#">
-                    Modelos de Machine Learning para Detección de SPAM en correos
+                    Machine Learning para Detección de SPAM en correos
                 </a>
             </li>
         </ul>
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="1_EDA.html">Análisis Exploratorio de Datos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2_Modelos.html">Preprocesamiento y Creación de Modelos de clasificación</a></li>
+
+
 
 
 
@@ -331,7 +335,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -342,11 +348,39 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Modelos de Machine Learning para Detección de SPAM en correos</h1>
+    <h1>Machine Learning para Detección de SPAM en correos</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Machine Learning para Detección de SPAM en correos</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#publicaciones-de-referencia">Publicaciones de referencia</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen">Resumen</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">Introducción</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#marco-teorico">Marco Teórico</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectores-de-embeddings-para-procesamiento-de-lenguaje-natural-nlp">Vectores de Embeddings para Procesamiento de Lenguaje Natural (NLP)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#word-embeddings">Word Embeddings</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#redes-neuronales-de-memoria-a-largo-plazo-lstm">Redes Neuronales de Memoria a Largo Plazo (LSTM)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estructura-de-una-celda-lstm">Estructura de una Celda LSTM</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stacked-machine-learning-models">Stacked Machine Learning Models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#composicion-de-modelos-apilados">Composición de Modelos Apilados</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ventajas-de-los-modelos-stacked">Ventajas de los Modelos Stacked</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -356,20 +390,142 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="modelos-de-machine-learning-para-deteccion-de-spam-en-correos">
-<h1>Modelos de Machine Learning para Detección de SPAM en correos<a class="headerlink" href="#modelos-de-machine-learning-para-deteccion-de-spam-en-correos" title="Permalink to this heading">#</a></h1>
-<p>Los siguientes notebooks contienen un análisis exploratorio de datos junto a la creación de un modelo de machine learning para clasificación de correos electrónicos</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="machine-learning-para-deteccion-de-spam-en-correos">
+<h1>Machine Learning para Detección de SPAM en correos<a class="headerlink" href="#machine-learning-para-deteccion-de-spam-en-correos" title="Permalink to this heading">#</a></h1>
+<p><strong>Autores:</strong> Martin Junior Alvarez Lopez, Karina Esther Rodríguez Barragán</p>
+<p>Fecha: 07-10-2023</p>
+<p>El siguiente artículo expone la creación de un modelo de machine learning stacked para clasificación de correos electrónicos, además de un análisis exploratorio del dataset de correos empleado y un proceso de evaluación de varios modelos clásicos de machine learning utilizados para clasificación.</p>
 <p><img alt="Sample Image" src="_images/1_nBgCTU_hAVG00eYkcRf6Mw.PNG" /></p>
-<p>En el proceso de evaluación de los modelos de machine learning, se determina cuál es el que mejor resuelve este problema y posteriormente se propone un <strong>stacked model</strong> para determinar si clasifica mejor que los modelos predefinidos</p>
-<p>Tabla de contenidos:</p>
-<div class="toctree-wrapper compound">
+<p>En el proceso de evaluación de los modelos de machine learning, se determina cuál es el que mejor resuelve este problema y posteriormente se presenta el <strong>stacked model</strong> propuesto, con el fin determinar si clasifica mejor que los modelos predefinidos.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="publicaciones-de-referencia">
+<h1>Publicaciones de referencia<a class="headerlink" href="#publicaciones-de-referencia" title="Permalink to this heading">#</a></h1>
+<p>Artículo 1:</p>
+<p><strong>Improving spam email classification accuracy using ensemble techniques: a stacking approach</strong></p>
+<ul class="simple">
+<li><p>Autores: Muhammad Adnan, Muhammad Osama Imam, Muhammad Furqan Javed, Iqbal Murtza.</p></li>
+<li><p>Fecha de publicación: 2 de septiembre de 2023.</p></li>
+<li><p>Modelos utilizados:</p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="1_EDA.html">Análisis Exploratorio de Datos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2_Modelos.html">Preprocesamiento y Creación de Modelos de clasificación</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2_Modelos.html#preprocesamiento">Preprocesamiento</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2_Modelos.html#nueva-propuesta-stacked-model">Nueva propuesta: Stacked model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2_Modelos.html#conclusiones">Conclusiones</a></li>
+<li><p>regresión logística</p></li>
+<li><p>árbol de decisión</p></li>
+<li><p>K-vecinos más cercanos (KNN)</p></li>
+<li><p>Bayes ingenuo gaussiano</p></li>
+<li><p>AdaBoost.</p></li>
 </ul>
+</li>
+<li><p>Métricas utilizadas:</p>
+<ul>
+<li><p>precisión</p></li>
+<li><p>recall</p></li>
+<li><p>F1 score</p></li>
+</ul>
+</li>
+<li><p>Mejor clasificador individual:</p>
+<ul>
+<li><p>AdaBoost se destacó como el mejor clasificador individual.</p></li>
+</ul>
+</li>
+<li><p>Método propuesto: Se propone un método de apilamiento para mejorar la precisión de la clasificación combinando predicciones de todos los modelos base.</p></li>
+<li><p>Resultados: El modelo stacked mostró un rendimiento superior con una Precisión del 98.8%, Recall del 98.8% y F1-Score del 98.9%, mejorando los otros métodos probados.</p></li>
+</ul>
+<p>Articulo 2:</p>
+<p><strong>Email classification analysis using machine learning techniques</strong></p>
+<ul class="simple">
+<li><p>Autores: Khalid Iqbal y Muhammad Shehrayar Khan</p></li>
+<li><p>Fecha de publicación: 17 de abril de 2022.</p></li>
+<li><p>Modelos utilizados:</p>
+<ul>
+<li><p>Naive Bayes</p></li>
+<li><p>Random Forest</p></li>
+<li><p>Decision Tree</p></li>
+<li><p>KNN</p></li>
+<li><p>Support Vector Machine</p></li>
+<li><p>Artificial Neural Network</p></li>
+</ul>
+</li>
+<li><p>Métricas de los mejores modelos:</p>
+<ul>
+<li><p>Máquina de Soporte Vectorial: Recall = 96.13%</p></li>
+<li><p>Red Neuronal Artificial: Recall = 98.34%</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="resumen">
+<h1>Resumen<a class="headerlink" href="#resumen" title="Permalink to this heading">#</a></h1>
+<p>En el presente estudio, se llevó a cabo un análisis exhaustivo de un conjunto de datos compuesto por mensajes de texto categorizados como “spam” o “ham” (no spam). Posteriormente, se desarrolló un modelo de aprendizaje profundo para clasificar estos mensajes. El análisis exploratorio reveló características intrínsecas de los datos, tales como un evidente desbalanceo en las clases, lo que llevó a emplear la técnica SMOTE y resolver este problema. Posteriormente se diseñó un modelo de aprendizaje profundo, basado en una arquitectura LSTM, el cuál demostró ser eficaz en la tarea de clasificación.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="introduccion">
+<h1>Introducción<a class="headerlink" href="#introduccion" title="Permalink to this heading">#</a></h1>
+<p>La clasificación de mensajes de texto en categorías de “spam” o “ham” es esencial en la era digital actual para filtrar información no deseada. El análisis exploratorio de datos (EDA) sirve como una herramienta fundamental para comprender la naturaleza y estructura de los datos. A su vez, los modelos de aprendizaje profundo, como las redes LSTM, han ganado popularidad debido a su capacidad para manejar datos secuenciales, como el texto. En este estudio, combinamos ambos enfoques para ofrecer una solución robusta al problema de clasificación de mensajes.</p>
+<p>Inicialmente, se llevó a cabo un EDA del conjunto de datos, revelando detalles clave sobre la distribución y naturaleza de los mensajes. Las etapas de preprocesamiento de texto, incluida la lematización y eliminación de palabras vacías, se implementaron para preparar los datos para el modelado. Posteriormente, se empleó un enfoque de Doc2Vec para transformar los mensajes en representaciones vectoriales. Finalmente, se construyó y entrenó un modelo Stacked para la tarea de clasificación, logrando resultados prometedores en términos de Recall.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="marco-teorico">
+<h1>Marco Teórico<a class="headerlink" href="#marco-teorico" title="Permalink to this heading">#</a></h1>
+<section id="vectores-de-embeddings-para-procesamiento-de-lenguaje-natural-nlp">
+<h2>Vectores de Embeddings para Procesamiento de Lenguaje Natural (NLP)<a class="headerlink" href="#vectores-de-embeddings-para-procesamiento-de-lenguaje-natural-nlp" title="Permalink to this heading">#</a></h2>
+<p>En el procesamiento de lenguaje natural (NLP), los vectores de embeddings desempeñan un papel crucial al representar palabras o frases como vectores numéricos densos. Estos embeddings capturan relaciones semánticas y similitudes entre palabras, facilitando la tarea de comprensión de texto para modelos de aprendizaje automático.</p>
+<section id="word-embeddings">
+<h3>Word Embeddings<a class="headerlink" href="#word-embeddings" title="Permalink to this heading">#</a></h3>
+<p>Los word embeddings, o embeddings de palabras, asignan cada palabra a un vector de números reales. Uno de los métodos más populares para generar estos embeddings es mediante modelos preentrenados como Word2Vec, GloVe o FastText. La representación vectorial permite capturar la semántica y la relación contextual entre palabras. La relación entre palabras se refleja en la proximidad de sus vectores en el espacio.</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Word2Vec: } \vec{v}_{\text{king}} - \vec{v}_{\text{man}} + \vec{v}_{\text{woman}} \approx \vec{v}_{\text{queen}}
+\]</div>
+</section>
+</section>
+<section id="redes-neuronales-de-memoria-a-largo-plazo-lstm">
+<h2>Redes Neuronales de Memoria a Largo Plazo (LSTM)<a class="headerlink" href="#redes-neuronales-de-memoria-a-largo-plazo-lstm" title="Permalink to this heading">#</a></h2>
+<p>Las redes neuronales de memoria a largo plazo (LSTM) son una arquitectura de red neuronal recurrente (RNN) diseñada para abordar el problema de la desaparición del gradiente en entrenamientos a largo plazo. Estas redes son particularmente efectivas en tareas de secuencia, como el procesamiento de texto y las series de tiempo, gracias a su capacidad para recordar y olvidar información a lo largo del tiempo.</p>
+<section id="estructura-de-una-celda-lstm">
+<h3>Estructura de una Celda LSTM<a class="headerlink" href="#estructura-de-una-celda-lstm" title="Permalink to this heading">#</a></h3>
+<p>La unidad básica de una red LSTM es la celda LSTM, que mantiene una memoria a largo plazo ((C_t)) y una memoria a corto plazo ((h_t)). La actualización de estas memorias se realiza a través de compuertas (input, forget y output).</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+f_t &amp;= \sigma(W_f \cdot [h_{t-1}, x_t] + b_f) \\
+i_t &amp;= \sigma(W_i \cdot [h_{t-1}, x_t] + b_i) \\
+o_t &amp;= \sigma(W_o \cdot [h_{t-1}, x_t] + b_o) \\
+\tilde{C}_t &amp;= \tanh(W_C \cdot [h_{t-1}, x_t] + b_C) \\
+C_t &amp;= f_t \cdot C_{t-1} + i_t \cdot \tilde{C}_t \\
+h_t &amp;= o_t \cdot \tanh(C_t)
+\end{align*}
+\end{split}\]</div>
+<p>Donde:</p>
+<ul class="simple">
+<li><p>(x_t) es la entrada en el tiempo (t).</p></li>
+<li><p>(h_t) es la salida en el tiempo (t).</p></li>
+<li><p>(C_t) es la memoria a largo plazo en el tiempo (t).</p></li>
+<li><p>(f_t), (i_t), (o_t) son las compuertas forget, input y output respectivamente.</p></li>
+<li><p>(\sigma) es la función sigmoide.</p></li>
+</ul>
+</section>
+</section>
+<section id="stacked-machine-learning-models">
+<h2>Stacked Machine Learning Models<a class="headerlink" href="#stacked-machine-learning-models" title="Permalink to this heading">#</a></h2>
+<p>Los modelos apilados son una estrategia avanzada en aprendizaje automático que combina las predicciones de varios modelos base para mejorar la precisión y robustez del modelo final. Este enfoque se basa en la premisa de que la combinación de modelos diversos puede compensar las debilidades individuales de cada modelo y producir resultados más sólidos.</p>
+<section id="composicion-de-modelos-apilados">
+<h3>Composición de Modelos Apilados<a class="headerlink" href="#composicion-de-modelos-apilados" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Modelo Base: Un modelo base es cualquier algoritmo de aprendizaje automático utilizado para realizar predicciones. Puede ser un modelo de regresión, clasificación u otro tipo de modelo supervisado.</p></li>
+<li><p>Meta-Modelo: El meta-modelo, también conocido como modelo de nivel superior, utiliza las predicciones de los modelos base como características de entrada para realizar la predicción final. Matemáticamente, esto se expresa como:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\hat{y}_{\text{final}} = f(\hat{y}_{\text{base\_1}}, \hat{y}_{\text{base\_2}}, ..., \hat{y}_{\text{base\_n}})
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(\hat{y}_{\text{final}}\)</span> es la predicción final y <span class="math notranslate nohighlight">\(\hat{y}_{\text{base\_i}}\)</span> son las predicciones de los modelos base.</p>
+</section>
+<section id="ventajas-de-los-modelos-stacked">
+<h3>Ventajas de los Modelos Stacked<a class="headerlink" href="#ventajas-de-los-modelos-stacked" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Mejora de la Generalización:</strong> La combinación de modelos base diversos reduce el riesgo de sobreajuste.</p></li>
+<li><p><strong>Aumento de la Precisión:</strong> La diversidad de modelos puede capturar patrones más complejos en los datos.</p></li>
+</ul>
+</section>
+</section>
+<div class="toctree-wrapper compound">
 </div>
 </section>
 
@@ -422,6 +578,40 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Machine Learning para Detección de SPAM en correos</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#publicaciones-de-referencia">Publicaciones de referencia</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen">Resumen</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">Introducción</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#marco-teorico">Marco Teórico</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectores-de-embeddings-para-procesamiento-de-lenguaje-natural-nlp">Vectores de Embeddings para Procesamiento de Lenguaje Natural (NLP)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#word-embeddings">Word Embeddings</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#redes-neuronales-de-memoria-a-largo-plazo-lstm">Redes Neuronales de Memoria a Largo Plazo (LSTM)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estructura-de-una-celda-lstm">Estructura de una Celda LSTM</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stacked-machine-learning-models">Stacked Machine Learning Models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#composicion-de-modelos-apilados">Composición de Modelos Apilados</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ventajas-de-los-modelos-stacked">Ventajas de los Modelos Stacked</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>
