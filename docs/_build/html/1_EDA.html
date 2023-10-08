@@ -64,7 +64,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '1_EDA';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Smote: equilibrio de clases" href="2_smote.html" />
+    <link rel="next" title="Preprocesamiento y Creación de Modelos de clasificación" href="2_Modelos.html" />
     <link rel="prev" title="Welcome to your Jupyter Book" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -158,9 +158,10 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Análisis Exploratorio de Datos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_Modelos.html">Preprocesamiento y Creación de Modelos de clasificación</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="2_smote.html">Smote: equilibrio de clases</a></li>
+
 </ul>
 
     </div>
@@ -354,22 +355,20 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Análisis Exploratorio de Datos</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocesamiento">Preprocesamiento</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cantidad-de-mensajes-por-categoria">Cantidad de mensajes por categoría</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conteo-de-palabras-por-categoria">Conteo de palabras por categoría</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conteo-de-oraciones-por-categoria">Conteo de oraciones por categoría</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-frecuencia-de-palabras-por-categoria">Análisis de frecuencia de palabras por categoría</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocesamiento">Preprocesamiento</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cantidad-de-mensajes-por-categoria">Cantidad de mensajes por categoría</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conteo-de-palabras-por-categoria">Conteo de palabras por categoría</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conteo-de-oraciones-por-categoria">Conteo de oraciones por categoría</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-frecuencia-de-palabras-por-categoria">Análisis de frecuencia de palabras por categoría</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-sentimientos">Análisis de sentimientos</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deteccion-del-sentimiento">Detección del sentimiento</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intensidad-del-sentimiento-por-categoria">Intensidad del sentimiento por categoria</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#porcentaje-de-sentimiento-por-categoria">Porcentaje de sentimiento por categoria</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-sentimientos">Análisis de sentimientos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deteccion-del-sentimiento">Detección del sentimiento</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intensidad-del-sentimiento-por-categoria">Intensidad del sentimiento por categoria</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#porcentaje-de-sentimiento-por-categoria">Porcentaje de sentimiento por categoria</a></li>
 </ul>
 </li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -487,9 +486,8 @@ Message: spam
 </div>
 </div>
 </div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="preprocesamiento">
-<h1>Preprocesamiento<a class="headerlink" href="#preprocesamiento" title="Permalink to this heading">#</a></h1>
+<section id="preprocesamiento">
+<h2>Preprocesamiento<a class="headerlink" href="#preprocesamiento" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -624,7 +622,7 @@ Message: spam
 </div></div></div>
 </div>
 <section id="cantidad-de-mensajes-por-categoria">
-<h2>Cantidad de mensajes por categoría<a class="headerlink" href="#cantidad-de-mensajes-por-categoria" title="Permalink to this heading">#</a></h2>
+<h3>Cantidad de mensajes por categoría<a class="headerlink" href="#cantidad-de-mensajes-por-categoria" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">custom_palette</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;spam&#39;</span><span class="p">:</span> <span class="s1">&#39;#B22222&#39;</span><span class="p">,</span> <span class="s1">&#39;ham&#39;</span><span class="p">:</span> <span class="s1">&#39;#006400&#39;</span><span class="p">}</span>
@@ -645,7 +643,7 @@ Message: spam
 </div>
 </section>
 <section id="conteo-de-palabras-por-categoria">
-<h2>Conteo de palabras por categoría<a class="headerlink" href="#conteo-de-palabras-por-categoria" title="Permalink to this heading">#</a></h2>
+<h3>Conteo de palabras por categoría<a class="headerlink" href="#conteo-de-palabras-por-categoria" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Función para contar las palabras en una cadena</span>
@@ -708,7 +706,7 @@ Message: spam
 </div>
 </section>
 <section id="conteo-de-oraciones-por-categoria">
-<h2>Conteo de oraciones por categoría<a class="headerlink" href="#conteo-de-oraciones-por-categoria" title="Permalink to this heading">#</a></h2>
+<h3>Conteo de oraciones por categoría<a class="headerlink" href="#conteo-de-oraciones-por-categoria" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a function to count sentences in a message</span>
@@ -742,7 +740,7 @@ Message: spam
 </div>
 </section>
 <section id="analisis-de-frecuencia-de-palabras-por-categoria">
-<h2>Análisis de frecuencia de palabras por categoría<a class="headerlink" href="#analisis-de-frecuencia-de-palabras-por-categoria" title="Permalink to this heading">#</a></h2>
+<h3>Análisis de frecuencia de palabras por categoría<a class="headerlink" href="#analisis-de-frecuencia-de-palabras-por-categoria" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Agrupa los mensajes por &#39;Category&#39; y concatena los mensajes en una sola cadena para cada categoría</span>
@@ -768,10 +766,10 @@ Message: spam
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="analisis-de-sentimientos">
-<h1>Análisis de sentimientos<a class="headerlink" href="#analisis-de-sentimientos" title="Permalink to this heading">#</a></h1>
+<section id="analisis-de-sentimientos">
+<h2>Análisis de sentimientos<a class="headerlink" href="#analisis-de-sentimientos" title="Permalink to this heading">#</a></h2>
 <section id="deteccion-del-sentimiento">
-<h2>Detección del sentimiento<a class="headerlink" href="#deteccion-del-sentimiento" title="Permalink to this heading">#</a></h2>
+<h3>Detección del sentimiento<a class="headerlink" href="#deteccion-del-sentimiento" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">analyzer</span> <span class="o">=</span> <span class="n">SentimentIntensityAnalyzer</span><span class="p">()</span>
@@ -804,7 +802,7 @@ Message: spam
 </div>
 </section>
 <section id="intensidad-del-sentimiento-por-categoria">
-<h2>Intensidad del sentimiento por categoria<a class="headerlink" href="#intensidad-del-sentimiento-por-categoria" title="Permalink to this heading">#</a></h2>
+<h3>Intensidad del sentimiento por categoria<a class="headerlink" href="#intensidad-del-sentimiento-por-categoria" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define custom colors for &#39;spam&#39; and &#39;ham&#39;</span>
@@ -826,7 +824,7 @@ Message: spam
 </div>
 </section>
 <section id="porcentaje-de-sentimiento-por-categoria">
-<h2>Porcentaje de sentimiento por categoria<a class="headerlink" href="#porcentaje-de-sentimiento-por-categoria" title="Permalink to this heading">#</a></h2>
+<h3>Porcentaje de sentimiento por categoria<a class="headerlink" href="#porcentaje-de-sentimiento-por-categoria" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define custom colors</span>
@@ -863,6 +861,7 @@ Message: spam
 <img alt="_images/b61fb78877cb3c205a41409379bb7c03ac00145d4d4a9ad4db0cada89508d684.png" src="_images/b61fb78877cb3c205a41409379bb7c03ac00145d4d4a9ad4db0cada89508d684.png" />
 </div>
 </div>
+</section>
 </section>
 </section>
 
@@ -907,11 +906,11 @@ Message: spam
       </div>
     </a>
     <a class="right-next"
-       href="2_smote.html"
+       href="2_Modelos.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Smote: equilibrio de clases</p>
+        <p class="prev-next-title">Preprocesamiento y Creación de Modelos de clasificación</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -933,22 +932,20 @@ Message: spam
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Análisis Exploratorio de Datos</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocesamiento">Preprocesamiento</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cantidad-de-mensajes-por-categoria">Cantidad de mensajes por categoría</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conteo-de-palabras-por-categoria">Conteo de palabras por categoría</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conteo-de-oraciones-por-categoria">Conteo de oraciones por categoría</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-frecuencia-de-palabras-por-categoria">Análisis de frecuencia de palabras por categoría</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocesamiento">Preprocesamiento</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cantidad-de-mensajes-por-categoria">Cantidad de mensajes por categoría</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conteo-de-palabras-por-categoria">Conteo de palabras por categoría</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conteo-de-oraciones-por-categoria">Conteo de oraciones por categoría</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-frecuencia-de-palabras-por-categoria">Análisis de frecuencia de palabras por categoría</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-sentimientos">Análisis de sentimientos</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deteccion-del-sentimiento">Detección del sentimiento</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intensidad-del-sentimiento-por-categoria">Intensidad del sentimiento por categoria</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#porcentaje-de-sentimiento-por-categoria">Porcentaje de sentimiento por categoria</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-sentimientos">Análisis de sentimientos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deteccion-del-sentimiento">Detección del sentimiento</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intensidad-del-sentimiento-por-categoria">Intensidad del sentimiento por categoria</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#porcentaje-de-sentimiento-por-categoria">Porcentaje de sentimiento por categoria</a></li>
 </ul>
 </li>
 </ul>
-
   </nav></div>
 
 </div></div>

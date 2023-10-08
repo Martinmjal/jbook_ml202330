@@ -5,4 +5,4 @@ format: jb-book
 root: intro
 chapters:
 - file: 1_EDA
-- file: 2_smote
+- file: 2_Modelos
