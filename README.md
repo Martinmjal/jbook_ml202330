@@ -4,6 +4,6 @@ Este proyecto muestra la creación de un modelo de machine learning stacked para
 
 En el proceso de evaluación de los modelos de machine learning, se determina cuál es el que mejor resuelve este problema y posteriormente se presenta el **stacked model** propuesto, con el fin determinar si clasifica mejor que los modelos predefinidos.
 
-Enlace al proyecto completo 👇👇👇:
+**Enlace al proyecto completo en github pages** 👇👇👇:
 
-[Machine Learning Models for Spam Emails Detection]([https://www.tupagina.com](https://martinmjal.github.io/jbook_ml202330/)https://martinmjal.github.io/jbook_ml202330/)
+[Machine Learning Models for Spam Emails Detection](https://martinmjal.github.io/jbook_ml202330/)
